@@ -86,7 +86,10 @@ jobs:
       - run: npm run build
         if: ${{ always() }}
       
-      - run: echo ${{ secrets.SLACK_INCOMING_URL }}
+      - name: Echo values
+        run: |
+          echo ${{ secrets.NODE_VERSION }}
+          echo ${{ secrets.SLACK_INCOMING_URL }}
 
       - name: Send slack when failed
         # 실패했을 때 실행되겠죠?
